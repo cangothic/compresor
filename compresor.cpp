@@ -3,21 +3,21 @@
 #include <string>
 #include <map>
 using namespace std;
-size_t numero_agrupar;
-map<string,int> diccionario;
+size_t numeroDeBitsagrupar;
+map<string,int> diccionarioContarPalabra;
 int main() {
   cout << "ingrese el numero de caracteres a agrupar" <<endl;
-  cin>>numero_agrupar;
+  cin>>numeroDeBitsagrupar;
   string palabra="";
   for (fstream file("in1.txt");file.good();) {
-    for (size_t i = 0; i < numero_agrupar; i++) {
-      char character=file.get();
-      palabra.push_back(character);
+    for (size_t indCaracter = 0; indCaracter < numeroDeBitsagrupar; indCaracter++) {
+      char caracter=file.get();
+      palabra.push_back(caracter);
     }
-    if(diccionario.count(palabra)==0){
-      diccionario[palabra]=0;
+    if(diccionarioContarPalabra.count(palabra)==0){
+      diccionarioContarPalabra[palabra]=0;
     }
-    diccionario[palabra]++;
+    diccionarioContarPalabra[palabra]++;
   }
   string prueba ="escribir";
   ofstream file("out.txt",ofstream::out);
