@@ -1,0 +1,6 @@
+Para que el renderer funcione debe copiar la libreria SDL2.dll a C:\Windows, además, necesita 
+el paquete redistribuible de .NET Framework 4.5.2 y Visual C++ Redistributable para Visual Studio 2015.
+
+Para iniciar el menú del renderer ejecute el archivo Iniciar.exe.
+Una vez hecho ésto, deberá aparecer una ventana donde podrá seleccionar el archivo
+que desea que el renderer muestre. para un mejor desempeño evite usar archivos de más de 1120 caracteres.
