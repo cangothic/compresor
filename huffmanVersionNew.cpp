@@ -49,11 +49,12 @@ int main(){
     for(ifstream file("casos/in1.txt"); file.good();i++){
         char caracter = file.get();
         palabra+=caracter;
-        if(i%tamDiccionario==3){
+        if(i%tamDiccionario==tamDiccionario-1){
             mapa[palabra]++;
             palabra = "";
         }
     }
+    palabra = "";
     priority_queue<Nodo,vector<Nodo>,greater<Nodo>> p;
     for(map<string,int>::iterator it=mapa.begin();it!=mapa.end();it++){
         Nodo* nodo = new Nodo(it->second,it->first);
@@ -76,14 +77,17 @@ int main(){
 
 
     ofstream fileOut("out.txt", ofstream::out);
+    i =0;
     for(ifstream file("casos/in1.txt"); file.good();i++){
         char caracter = file.get();
         palabra+=caracter;
-        if(i%tamDiccionario==3){
+        if(i%tamDiccionario==tamDiccionario-1){
+            cout<<"agregare la palabra "<<palabra<<" con codificacion "<<mapaCodificacion[palabra]<<endl;
             fileOut<<mapaCodificacion[palabra];
             palabra = "";
         }
     }
+    fileOut.close();
 
     return 0;
 }
