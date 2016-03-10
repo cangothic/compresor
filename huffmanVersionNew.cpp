@@ -33,13 +33,12 @@ void dfs(Nodo n, string codificacion,map<string,string> &mapaCodificacion){
     cout<<n.peso<<endl;
     if(n.valor!=""){
         mapaCodificacion[n.valor] = codificacion;
-        cout<<n.valor<<" es "<<codificacion<<endl;
     }
     if(n.izq!=nullptr){
-        dfs(*n.izq,codificacion+='0',mapaCodificacion);
+        dfs(*n.izq,codificacion+'0',mapaCodificacion);
     }
     if(n.der!=nullptr){
-        dfs(*n.der,codificacion+='1',mapaCodificacion);
+        dfs(*n.der,codificacion+'1',mapaCodificacion);
     }
 }
 int main(){
