@@ -62,12 +62,12 @@ int main(){
     }
 
     while(p.size()>1){
-        Nodo* n11 = new Nodo(p.top());p.pop();
-        Nodo* n22 = new Nodo(p.top());p.pop();
-        Nodo* n3 = new Nodo(n11->peso+n22->peso);
-        n3->izq = n11;
-        n3->der = n22;
-        p.push(*n3);
+        Nodo* nodoIzquierdo= new Nodo(p.top());p.pop();
+        Nodo* nodoDerecho = new Nodo(p.top());p.pop();
+        Nodo* nodoPadre = new Nodo((nodoIzquierdo->peso)+(nodoDerecho->peso));
+        nodoPadre->izq = nodoIzquierdo;
+        nodoPadre->der = nodoDerecho;
+        p.push(*nodoPadre);
 
     }
     Nodo padre = p.top();p.pop();
