@@ -24,9 +24,9 @@ struct Nodo{
     ~Nodo(){
     }
 };
-bool operator >(const Nodo& lhs, const Nodo& rhs)
+bool operator <(const Nodo& lhs, const Nodo& rhs)
 {
-    return lhs.peso > rhs.peso;
+    return lhs.peso < rhs.peso;
 }
 
 void dfs(Nodo n, string codificacion,map<string,string> &mapaCodificacion){
@@ -55,7 +55,7 @@ int main(){
             palabra = "";
         }
     }
-    priority_queue<Nodo,vector<Nodo>,Compare> p;
+    priority_queue<Nodo,vector<Nodo>> p;
     for(map<string,int>::iterator it=mapa.begin();it!=mapa.end();it++){
         Nodo* nodo = new Nodo(it->second,it->first);
         p.push(*nodo);
