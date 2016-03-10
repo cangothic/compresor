@@ -24,13 +24,10 @@ struct Nodo{
     ~Nodo(){
     }
 };
-struct Compare
+bool operator >(const Nodo& lhs, const Nodo& rhs)
 {
-  bool operator()(const Nodo& lhs, const Nodo& rhs) const
-  {
     return lhs.peso > rhs.peso;
-  }
-};
+}
 
 void dfs(Nodo n, string codificacion,map<string,string> &mapaCodificacion){
     cout<<n.peso<<endl;
@@ -46,7 +43,6 @@ void dfs(Nodo n, string codificacion,map<string,string> &mapaCodificacion){
     }
 }
 int main(){
-    cout<<"hola"<<endl;
     int tamDiccionario = 4;
     int i=0;
     string palabra = "";
