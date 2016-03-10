@@ -30,8 +30,8 @@ bool operator >(const Nodo& lhs, const Nodo& rhs)
 }
 
 void dfs(Nodo n, string codificacion,map<string,string> &mapaCodificacion){
-    cout<<n.peso<<endl;
     if(n.valor!=""){
+        cout<<n.valor<<" codificado es "<<codificacion<<endl;
         mapaCodificacion[n.valor] = codificacion;
     }
     if(n.izq!=nullptr){
@@ -49,7 +49,7 @@ int main(){
     for(ifstream file("casos/in1.txt"); file.good();i++){
         char caracter = file.get();
         palabra+=caracter;
-        if(i%4==3){
+        if(i%tamDiccionario==3){
             mapa[palabra]++;
             palabra = "";
         }
@@ -73,5 +73,17 @@ int main(){
     map<string,string> mapaCodificacion; /*antes y despues*/
 
     dfs(padre,"",mapaCodificacion);
+
+
+    ofstream fileOut("out.txt", ofstream::out);
+    for(ifstream file("casos/in1.txt"); file.good();i++){
+        char caracter = file.get();
+        palabra+=caracter;
+        if(i%tamDiccionario==3){
+            fileOut<<mapaCodificacion[palabra];
+            palabra = "";
+        }
+    }
+
     return 0;
 }
