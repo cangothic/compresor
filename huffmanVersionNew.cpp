@@ -1,4 +1,19 @@
 #include <bits/stdc++.h>
+/*
+ «Copyright brian giraldo and carlos vergara 2016>>
+  This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses>
+*/
 using namespace std;
 struct Nodo{
     int peso;
@@ -42,14 +57,15 @@ void dfs(Nodo n, string codificacion,map<string,string> &mapaCodificacion){
     }
 }
 int main(){
-    int tamDiccionario = 4;
+    int tamanoPalabra = 4;
     int i=0;
-    string palabra = "";
+    string palabra ="";
+    string dirArchibo = "casos/in1.txt";
     map<string,int> mapa;
-    for(ifstream file("casos/in1.txt"); file.good();i++){
+    for(ifstream file(dirArchibo.c_str()); file.good();i++){
         char caracter = file.get();
         palabra+=caracter;
-        if(i%tamDiccionario==tamDiccionario-1){
+        if(i%tamanoPalabra==tamanoPalabra-1){
             mapa[palabra]++;
             palabra = "";
         }
@@ -78,11 +94,10 @@ int main(){
 
     ofstream fileOut("out.txt", ofstream::out);
     i =0;
-    for(ifstream file("casos/in1.txt"); file.good();i++){
+    for(ifstream file(dirArchibo.c_str()); file.good();i++){
         char caracter = file.get();
         palabra+=caracter;
-        if(i%tamDiccionario==tamDiccionario-1){
-            cout<<"agregare la palabra "<<palabra<<" con codificacion "<<mapaCodificacion[palabra]<<endl;
+        if(i%tamanoPalabra==tamanoPalabra-1){
             fileOut<<mapaCodificacion[palabra];
             palabra = "";
         }
